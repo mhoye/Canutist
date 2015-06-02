@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>All Hail King Canute</title>
+<link href="index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="logo">
+<center><img src="allthethings.jpeg" width="800px"></center>
+</div>
+
+<div id="leftside">
+
+<p>
+<h2>The most important part of a software bug's life is triage.</h2>
+</p>
+
+<p>
+Triage is more than just filing a bug in the right category; it's about clarifying,
+simplifying and reproducing the challenges our users face, about getting a bug from 
+an incident reported by a user to an understood problem ready for an enginering
+decision.
+</p>
+
+<p>
+Mozilla sees dozens or hundreds of new bugs every day, but if you can spare a few
+minutes of your day you can help us stay on top of them. Sign up below; enter your
+name, Bugzilla email address, and a number of bugs we can send you.  Once a week,
+five days a week or every day, we'll send you an email with links to new issues
+our community is facing, so you can help get them to the right place.
+</p>
+
+
+<form action="index.py" method="post">
+
+Name or IRC handle: <input type="text" name="nickname"/><br/>
+Email: <input type="text" name="email" /><p>
+Number of bugs:
+<select name="number">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="5">5</option>
+<option value="8">8</option>
+</select><br/>
+How often? 
+<select name="rate">
+<option value="daily">Daily</option>
+<option value="workdays">Mon-Fri</option>
+<option value="weekly">Weekly</option>
+</select>
+<p>
+ <input type="submit" value="Submit"></p>
+</form>
+</p>
+</div>
+
+
+<div id="rightside">
+<p>
+We're also updating Bugzilla to make sorting new bugs into new categories fast
+and easy. Soon moving bugs to a new category will be a matter of a few seconds 
+and one step. 
+</p>
+<p>
+We can even simplify the triage process with 
+<a href="https://github.com/gijsk/triage-helper">the Triage-Helper addon</a>. 
+This will let triagers quickly ask contributors for a series of common next 
+steps, including reproducing the bug in a clean profile or safe mode, 
+narrowing down a test case, and others.
+</p>
+<p>
+For more information about how to triage effectively, take a look at these
+documents: 
+</p>
+
+<p>
+At the moment this is an experimental service. More development - including
+a proper "unsubscribe" - is on the way.
+</p>
+
+</div>
+
+<div id="footer">
+For more information, including how to unsubscribe, <a href="mailto:mhoye@mozilla.com">mail Mike Hoye</a>
+</div>
+
+</div>
+
+</body>
+</html>

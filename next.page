@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>Thank you</title>
+<link href="index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="logo">
+<center><img src="allthethings.jpeg" width="800px"></center>
+</div>
+
+<p>
+<h2>Thank you.<h2>
+</p>
+
+<p>
+We'll send some bugs to triage to your inbox soon. Thank you for your help; if you'd like to change
+the frequency or quantity of emails you receive, you can change your settings at any time by signing
+up again with the same email address and the options of your choice. This process will improve
+very shortly. 
+</p>
+
+<p>
+If you'd like to unsubscribe, <a href="mailto:mhoye@mozila.com">mail Mike Hoye directly.
+</p>
+
+
+
+</div>
+
+</body>
+</html>

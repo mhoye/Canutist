@@ -1,0 +1,42 @@
+BODY
+{
+        font-family: "Open Sans", Helvetica, Arial, sans-serif;
+        font-size: 14;
+	      color: #333;
+        margin-left: auto;
+        margin-right: auto;
+        width: 800px;
+        line-height: 1.5em;
+	      background: #FFF;
+}
+IMG
+{
+        border: none;
+}
+.logo
+{
+        align: center;
+}
+.section
+{
+        margin-bottom: 7px;
+}
+.header
+{
+        text-align: center;
+}
+#leftside
+{
+        width: 390px;
+        float: left;
+}
+#rightside
+{
+        width: 390px;
+        float: right;
+}
+#footer
+{
+	width: 100%;
+	float: bottom;
+}

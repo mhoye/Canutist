@@ -1,0 +1,9 @@
+{
+"server": "<your Bugzilla server>",
+"owner": "<your name>",
+"user": "<bugzilla service account>",
+"password": "<bugzilla service account password>",
+"smtp_user": "<your outgoing mail service account>",
+"smtp_password": "<mail service account password>",
+"smtp_server": "<outgoing mail server>"
+}
