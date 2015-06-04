@@ -49,35 +49,33 @@ def emit(text):
 
 def store(email,nickname,number,rate):
     # User-entered data hits the filesystem here.  
-    #if not validate_email(email):
-    #    return
+    if not validate_email(email):
+        return
 
     logging.info("Sanitizing user-provided data...")
-    clean_email = bleach.clean(email)  # belt and suspenders, why not.
-    clean_nick = bleach.clean(nickname)
-    clean_num  = bleach.clean(number)
-    clean_rate = bleach.clean(rate)
-   
+    newcontrib = [ bleach.clean(email), bleach.clean(nickname), bleach.clean(number), bleach.clean(rate)]
+
     try:  
-        participants = json.load(open("/etc/bz-triage/participants.cfg"))
+        contributors = json.load(open("/var/local/bz-triage/contributors.cfg"))
+        logging.info("File open...")
     except:
-        participants = list()
+        logging.info("Failed to open the file...")
+        contributors = list()
     # If email is in data, remove it.
     
     #FIXME: FILE LOCK RACE CONDITION HERE.
 
-    for optset in participants:
-        if optset[0] == clean_email:
-            participants.remove(optset)
+    logging.info( str(contributors))
+    for existing in contributors:
+        if existing[0] == newcontrib[0]:
+            contributors.remove(existing)
             logging.info("Replacing redundant entry...")
-            break
-    else:
-        logging.info("Appending new information for user " + str(clean_nick))
-        participants.append( [clean_email, clean_nick, clean_num, clean_rate] )
-     
+    logging.info("Appending new information for user " + str(newcontrib))
+    contributors.append( newcontrib )
+
     logging.info("Writing table to disk.") 
-    with open("/etc/bz-triage/participants.cfg", 'w') as outfile:
-        json.dump(participants, outfile)
+    with open("/var/local/bz-triage/contributors.cfg", 'w') as outfile:
+        json.dump(contributors, outfile)
 
        
 if __name__ == "__main__":

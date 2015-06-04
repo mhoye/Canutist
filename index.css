@@ -15,13 +15,13 @@ IMG
 }
 .logo
 {
-        align: center;
+        text-align: center;
 }
 .section
 {
         margin-bottom: 7px;
 }
-.header
+#header
 {
         text-align: center;
 }
@@ -35,8 +35,11 @@ IMG
         width: 390px;
         float: right;
 }
+
 #footer
 {
-	width: 100%;
-	float: bottom;
+  position: absolute;
+  bottom: 30px;
+  width: 800px;
+  text-align: center;
 }

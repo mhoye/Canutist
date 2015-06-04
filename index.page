@@ -8,12 +8,14 @@
 <center><img src="allthethings.jpeg" width="800px"></center>
 </div>
 
-<div id="leftside">
+<div id="header">
 
 <p>
 <h2>The most important part of a software bug's life is triage.</h2>
 </p>
+</div>
 
+<div id="leftside">
 <p>
 Triage is more than just filing a bug in the right category; it's about clarifying,
 simplifying and reproducing the challenges our users face, about getting a bug from 
@@ -24,9 +26,11 @@ decision.
 <p>
 Mozilla sees dozens or hundreds of new bugs every day, but if you can spare a few
 minutes of your day you can help us stay on top of them. Sign up below; enter your
-name, Bugzilla email address, and a number of bugs we can send you.  Once a week,
-five days a week or every day, we'll send you an email with links to new issues
-our community is facing, so you can help get them to the right place.
+name, Bugzilla email address, and a maximum number of bugs we can send you.  
+</p>
+Once a week, five days a week or every day if you like, we'll send you an email 
+with links to new issues our community is facing so you can help get them 
+to the right place.
 </p>
 
 
@@ -41,6 +45,8 @@ Number of bugs:
 <option value="3">3</option>
 <option value="5">5</option>
 <option value="8">8</option>
+<option value="12">12</option>
+<option value="15">15</option>
 </select><br/>
 How often? 
 <select name="rate">
@@ -69,21 +75,21 @@ steps, including reproducing the bug in a clean profile or safe mode,
 narrowing down a test case, and others.
 </p>
 <p>
-For more information about how to triage effectively, take a look at these
-documents: 
+If you're just getting started: Welcome! You'll need a Bugzilla account with <a href="https://bugzilla.mozilla.org/page.cgi?id=get_permissions.html">"CanConfirm"</a> 
+permissions to help. Once you have those, please take a moment to read these
+documents on <a href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Triaging_Bugs_for_Firefox">Effective
+bug triage for Firefox</a> and best practices for <a href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Confirming_unconfirmed_bugs">confirm
+unconfirmed bugs</a>.
 </p>
-
-<p>
-At the moment this is an experimental service. More development - including
-a proper "unsubscribe" - is on the way.
-</p>
-
 </div>
+
+
 
 <div id="footer">
-For more information, including how to unsubscribe, <a href="mailto:mhoye@mozilla.com">mail Mike Hoye</a>
-</div>
-
+<p>
+At the moment this is an experimental service. More development - including
+a proper "unsubscribe" - is on the way. <a href="https://docs.google.com/a/mozilla.com/forms/d/17H4GmPMZUgFdZEGLknmRxZOneH7A3-d1pvV2Qwctuko/viewform">To provide feedback,
+please use this form.</a> For more information, including (for now) how to unsubscribe, <a href="mailto:mhoye@mozilla.com">mail Mike Hoye</a>
 </div>
 
 </body>
