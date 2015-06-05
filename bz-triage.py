@@ -206,20 +206,21 @@ Again, thank you. If you have any questions or concerns about the this process, 
 
 '''
 
-    smtp = cfg["smtp_server"].encode("utf8")
-    sender = cfg["smtp_user"].encode("utf8")
-    server = smtplib.SMTP(smtp)
-    server.set_debuglevel(True)
-    #server.connect(smtp)
-    server.ehlo()
-    #server.login(sender, cfg["smtp_pass"].encode("utf8"))
-    msg = MIMEText((content))
-    msg["Subject"] = str("Bugs to triage for %s" % (date.today()) ).encode("utf8")
-    msg["From"] = cfg["smtp_user"].encode("utf8")
-    msg["To"] = rec[0].encode("utf8")
-    #msg["Reply-To"] = "noreply@mozilla.com"
-    server.sendmail(sender, rec[0].encode("utf8") , msg.as_string())
-    server.quit()
+        smtp = cfg["smtp_server"].encode("utf8")
+        sender = cfg["smtp_user"].encode("utf8")
+        server = smtplib.SMTP(smtp)
+        server.set_debuglevel(True)
+        #server.connect(smtp)
+        server.ehlo()
+        #server.login(sender, cfg["smtp_pass"].encode("utf8"))
+        msg = MIMEText((content))
+        msg["Subject"] = str("Bugs to triage for %s" % (date.today()) ).encode("utf8")
+        msg["From"] = cfg["smtp_user"].encode("utf8")
+        msg["To"] = rec[0].encode("utf8")
+        #msg["Reply-To"] = "noreply@mozilla.com"
+        server.sendmail(sender, rec[0].encode("utf8") , msg.as_string())
+        server.quit()
+        logging.info("Mailed bugs to: " + rec[0].encode("utf8"))
 
 if __name__ == "__main__":
     main()
