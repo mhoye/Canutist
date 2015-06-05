@@ -175,13 +175,15 @@ Today we'd like you to look at the following bugs:
         bugurls = ""
         for boog in mailout[rec[0]]:
         # ADDBUGS HERE     
-              bugurls += '''<a href="http://bugzilla.mozilla.org/%s">Bug %s</a> - %s
+              bugurls += '''Bug %s - http://bugzilla.mozilla.org/%s - %s
 
 ''' % (boog.id, boog.id, boog.summary)
         content += bugurls
 
 
-        content += '''Please make some time to look through your set and look for ways to move the bugs forward:
+        content += '''
+
+Please make some time to look through your set and look for ways to move the bugs forward:
 
       - Most importantly, sort the bug into the correct component.
       - Search for similar bugs or duplicates and link them together if found
@@ -189,7 +191,7 @@ Today we'd like you to look at the following bugs:
       - Ask for ( or provide! ) steps to reproduce in a clean profile or safe mode
       - Ask the reporter for related crash reports in about:crashes
       - Provide suggestions on how to fix the bug
-      - Does this look like a small fix? Add "Good First Bug" to the whiteboard!
+      - Does this look like a small fix? Add [good first bug] to the whiteboard!
 
 And finally:
 
@@ -206,19 +208,18 @@ Again, thank you. If you have any questions or concerns about the this process, 
 
     smtp = cfg["smtp_server"].encode("utf8")
     sender = cfg["smtp_user"].encode("utf8")
-    server = smtplib.SMTP_SSL(smtp, 465)
+    server = smtplib.SMTP(smtp)
     server.set_debuglevel(True)
-    server.connect(smtp, 465)
+    #server.connect(smtp)
     server.ehlo()
     #server.login(sender, cfg["smtp_pass"].encode("utf8"))
-    msg = MIMEText((content)) 
-    msg["Subject"] = str("Bugs to triage for %s" % (date) ).encode("utf8")
-    msg["From"] = str("noreply@mozilla.com").encode("utf8") 
+    msg = MIMEText((content))
+    msg["Subject"] = str("Bugs to triage for %s" % (date.today()) ).encode("utf8")
+    msg["From"] = cfg["smtp_user"].encode("utf8")
     msg["To"] = rec[0].encode("utf8")
-    msg["Reply-To"] = str("noreply@mozilla.com").encode("utf8")
-    server.sendmail(sender, user, msg.as_string())
+    #msg["Reply-To"] = "noreply@mozilla.com"
+    server.sendmail(sender, rec[0].encode("utf8") , msg.as_string())
     server.quit()
-
 
 if __name__ == "__main__":
     main()
