@@ -185,7 +185,8 @@ Today we'd like you to look at the following bugs:
 
 Please make some time to look through your set and look for ways to move the bugs forward:
 
-      - Most importantly, sort the bug into the correct component.
+      - Most importantly, sort the bug into the correct component:
+        https://developer.mozilla.org/en-US/docs/Mozilla/QA/Confirming_unconfirmed_bugs
       - Search for similar bugs or duplicates and link them together if found
       - Check the tags, title and description for clarity and precision
       - Ask for ( or provide! ) steps to reproduce in a clean profile or safe mode
@@ -196,6 +197,10 @@ Please make some time to look through your set and look for ways to move the bug
 And finally:
 
       - Actually try to fix the bug, if it seems within reach
+
+If you're just getting started and aren't sure how to proceed, this link will help:
+
+        https://developer.mozilla.org/en-US/docs/Mozilla/QA/Triaging_Bugs_for_Firefox
 
 As always, the point of this exercise is to get the best information possible in front the right engineers.
 After some or all the above has been attempted, you can bump the status of the bug from "unconfirmed" to "new"
@@ -213,7 +218,7 @@ Again, thank you. If you have any questions or concerns about the this process, 
         #server.connect(smtp)
         server.ehlo()
         #server.login(sender, cfg["smtp_pass"].encode("utf8"))
-        msg = MIMEText((content))
+        msg = MIMEText(str(content).encode("utf8"))
         msg["Subject"] = str("Bugs to triage for %s" % (date.today()) ).encode("utf8")
         msg["From"] = cfg["smtp_user"].encode("utf8")
         msg["To"] = rec[0].encode("utf8")
