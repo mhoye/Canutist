@@ -19,11 +19,11 @@ Files and permissions required by this application are:
 The bz-triage.cfg file looks like this:
 
 {
-"server": "<your Bugzilla server>",
-"owner": "<your name>",
-"user": "<bugzilla service account>",
-"password": "<bugzilla service account password>",
-"smtp_user": "<your outgoing mail service account>",
-"smtp_password": "<mail service account password>",
-"smtp_server": "<outgoing mail server>"
+"server": "&lt;your Bugzilla server&gt;",
+"owner": "&lt;your name&gt;",
+"user": "&lt;bugzilla service account&gt;",
+"password": "&lt;bugzilla service account password&gt;",
+"smtp_user": "&lt;your outgoing mail service account&gt;",
+"smtp_password": "&lt;mail service account password&gt;",
+"smtp_server": "&lt;outgoing mail server&gt;"
 }
