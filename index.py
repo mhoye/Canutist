@@ -6,6 +6,7 @@ import cgi
 import cgitb
 import logging, logging.handlers
 from validate_email import validate_email
+from lockfile import LockFile
 import bleach
 
 def main():
@@ -55,6 +56,9 @@ def store(email,nickname,number,rate):
     logging.info("Sanitizing user-provided data...")
     newcontrib = [ bleach.clean(email), bleach.clean(nickname), bleach.clean(number), bleach.clean(rate)]
 
+    lock = LockFile("/var/loca/bz-triage/contributors.cfg/")
+    lock.acquire()
+    
     try:  
         contributors = json.load(open("/var/local/bz-triage/contributors.cfg"))
         logging.info("File open...")
@@ -76,7 +80,7 @@ def store(email,nickname,number,rate):
     logging.info("Writing table to disk.") 
     with open("/var/local/bz-triage/contributors.cfg", 'w') as outfile:
         json.dump(contributors, outfile)
-
+    lock.release()
        
 if __name__ == "__main__":
     main()
