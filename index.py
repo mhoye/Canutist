@@ -56,7 +56,7 @@ def store(email,nickname,number,rate):
     logging.info("Sanitizing user-provided data...")
     newcontrib = [ bleach.clean(email), bleach.clean(nickname), bleach.clean(number), bleach.clean(rate)]
 
-    lock = LockFile("/var/loca/bz-triage/contributors.cfg/")
+    lock = LockFile("/var/local/bz-triage/contributors.cfg")
     lock.acquire()
     
     try:  

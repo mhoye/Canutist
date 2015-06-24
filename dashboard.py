@@ -28,16 +28,16 @@ def main():
         sh.setLevel(logging.DEBUG)
         logging.root.addHandler(sh)
 
-    #rfh = logging.handlers.RotatingFileHandler("/var/log/bz-triage.log",
-    #                                           backupCount=10,
-    #                                           maxBytes=1000000)
-    #rfh.setFormatter(fmt)
-    #rfh.setLevel(logging.DEBUG)
-    #logging.root.addHandler(rfh)
-    #logging.root.setLevel(logging.DEBUG)
+    rfh = logging.handlers.RotatingFileHandler("/var/log/bz-triage.log",
+                                               backupCount=10,
+                                               maxBytes=1000000)
+    rfh.setFormatter(fmt)
+    rfh.setLevel(logging.DEBUG)
+    logging.root.addHandler(rfh)
+    logging.root.setLevel(logging.DEBUG)
 
-    #logging.info("Generating static audit page for previous ten days."
-    #logging.info("loading config... ")
+    logging.info("Generating static audit page for previous ten days.")
+    logging.info("loading config... ")
     cfg = json.load(open("/etc/bz-triage.cfg"))
 
     server = cfg["server"].encode("utf8")
@@ -45,19 +45,54 @@ def main():
     user =  cfg["user"]
     password =  cfg["password"]
 
-    # for (last ten days of bugs) get (bug count)
-    
-    for inc in range(1,10):
-        print inc
-
-
-def getOutstandingBugs(someday):
+    bugdays = dict()
     try:
+        contributors = json.load(open("/var/local/bz-triage/contributors.cfg"))
         bzagent = BMOAgent(user,password)
-        logging.info("Connected to " + str(server) )
+        logging.info("Data sources obtained.")
     except:
-        logging.info("Failed to connect to " + str(server))
-        exit(-1)
+        logging.info("Failed to obtain data sources.")
+        exit(-1) 
+    for inc in range(1,10):
+       d = date.today() - timedelta(inc)
+       bugdays[d] = getOutstandingBugs(bzagent, d)
+    
+    print ('''<html>
+<head>
+<title>All Hail King Canute</title>
+<link href="index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="logo">
+<center><img src="allthethings.jpeg" width="800px"></center>
+</div>
+
+<div id="header">
+<h2>Current Status</h2>
+</div>
+<div id="body">
+<h3>Number of contributors: %d</h3> 
+''', len(contributors))
+   
+    print '''</div>
+
+<div id="header">
+Outstanding Bugs!
+</div>
+'''
+
+    for key in bugdays:
+        print '''<div class="dayheader">Outstanding bugs for %s: %s</div>''', str(key),  str(len(bugdays[key]))
+        print '''<div class="day"><blockquote>'''
+        for boog in bugdays[key]:
+            print '''<a href="https://bugzilla.mozilla.org/%s">Bug %s</a>: %s''' % (boog.id, boog.id, boog.summary)
+        print '''</blockquote></div>'''
+
+    print "</body></html>"
+
+
+def getOutstandingBugs(bzagent,someday):
+
     date_from  = str(date.isoformat(someday - timedelta(1))).encode("utf8")
     date_to    = str(date.isoformat(someday)).encode("utf8")
 
@@ -111,8 +146,9 @@ def getOutstandingBugs(someday):
     for options in option_sets.values():
         bugs = bzagent.get_bug_list(options) 
         buglist.extend(bugs)
-
-    return bugs
+  
+    print  date_to + " - " + str(len(buglist))
+    return buglist
 
 
 if __name__ == "__main__":

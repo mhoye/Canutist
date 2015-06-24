@@ -16,28 +16,28 @@
 </div>
 
 <div id="leftside">
+
 <p>
-Triage is more than just filing a bug in the right category; it's about clarifying,
-simplifying and reproducing the challenges our users face, about getting a bug from 
-an incident reported by a user to an understood problem ready for an enginering
-decision.
+Triage is the most important and least loved part of a bug's lifecycle, and
+Mozilla sees dozens or hundreds of new bugs filed every day.
 </p>
 
 <p>
-Mozilla sees dozens or hundreds of new bugs every day, but if you can spare a few
-minutes of your day you can help us stay on top of them. Sign up below; enter your
-name, Bugzilla email address, and a maximum number of bugs we can send you.  
+iIf you can spare a few minutes per day you can help us fight back the tide. 
+Sign up below; enter your name, Bugzilla email address, and a maximum number
+of bugs we can send you.  
 </p>
+
+<p>
 Once a week, five days a week or every day if you like, we'll send you an email 
 with links to new issues our community is facing so you can help get them 
-to the right place.
+to the right place and the right person with the right information.
 </p>
 
-
+<p>
 <form action="index.py" method="post">
-
 Name or IRC handle: <input type="text" name="nickname"/><br/>
-Email: <input type="text" name="email" /><p>
+Email: <input type="text" name="email" /><br/>
 Number of bugs:
 <select name="number">
 <option value="1">1</option>
@@ -54,6 +54,7 @@ How often?
 <option value="workdays">Mon-Fri</option>
 <option value="weekly">Weekly</option>
 </select>
+</p>
 <p>
  <input type="submit" value="Submit"></p>
 </form>
