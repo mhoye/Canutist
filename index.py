@@ -65,9 +65,6 @@ def store(email,nickname,number,rate):
     except:
         logging.info("Failed to open the file...")
         contributors = list()
-    # If email is in data, remove it.
-    
-    #FIXME: FILE LOCK RACE CONDITION HERE.
 
     logging.info( str(contributors))
     for existing in contributors:
