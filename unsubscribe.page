@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>All Hail King Canute</title>
+<link href="index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="logo">
+<center><img src="allthethings.jpeg" width="800px"></center>
+</div>
+
+<div id="header">
+
+<p>
+<h2>Unsubscribe</h2>
+</p>
+</div>
+
+<div id="unsub">
+
+<p>
+If you'd like to unsubscribe, please enter your email address below.
+</p>
+
+<p>
+<form action="unsubscribe.py" method="post">
+Email: <input type="text" name="email" /><br/>
+</p>
+<p>
+ <input type="submit" value="Unsubscribe"></p>
+</form>
+</p>
+</div>
+
+<div id="footer">
+<p>
+At the moment this is an experimental service. More development - including
+a proper "unsubscribe" - is on the way. <a href="https://docs.google.com/a/mozilla.com/forms/d/17H4GmPMZUgFdZEGLknmRxZOneH7A3-d1pvV2Qwctuko/viewform">To provide feedback,
+please use this form.</a> For more information, including (for now) how to unsubscribe, <a href="mailto:mhoye@mozilla.com">mail Mike Hoye</a>
+</div>
+
+</body>
+</html>
