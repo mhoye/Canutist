@@ -15,12 +15,21 @@
 <p>
 We'll send some bugs to triage to your inbox soon. Thank you for your help; if you'd like to change
 the frequency or quantity of emails you receive, you can change your settings at any time by signing
-up again with the same email address and the options of your choice. This process will improve
-very shortly. 
+up again with the same email address and the options of your choice.
+
 </p>
 
 <p>
-If you'd like to unsubscribe, <a href="mailto:mhoye@mozila.com">mail Mike Hoye directly.
+If you're just getting started with Mozilla's bug tracker, you'll also need to <a href="https://bugzilla.mozilla.org/createaccount.cgi">sign up for a Bugzilla account</a>
+and get <a href="https://bugzilla.mozilla.org/page.cgi?id=get_permissions.html">"CanConfirm" permissions to modify bugs.</a>
+Once you 've got that, you're ready to go. Please take a moment bdto read these
+documents on <a href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Triaging_Bugs_for_Firefox">Effective
+bug triage for Firefox</a> and best practices for <a href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Confirming_unconfirmed_bugs">confirming
+unconfirmed bugs</a>.
+</p>
+
+<p>
+If you've changed your mind, <a href="unsubscribe.py">click here to unsubscribe</a>.
 </p>
 
 

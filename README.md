@@ -1,6 +1,12 @@
 # Canutist
-This is a tool for facilitating community involvement the Bugzilla triage process. 
-It depends on bztools, available here:
+This is a tool for facilitating community involvement the Bugzilla triage process.
+It is named for Canute The Great, 12th century king of what are now Denmark, Norway, 
+England and Sweden, and dedicated to those of us who cannot simply order the 
+incoming tides to stop.
+
+https://en.wikipedia.org/wiki/King_Canute_and_the_waves
+ 
+Outside of Python and the relevant modules it also depends on bztools, available here:
 
 https://github.com/LegNeato/bztools
 
@@ -8,15 +14,15 @@ https://github.com/LegNeato/bztools
 
 Steps to install are:
 - Set up a webserver such as Apache or Lighhtpd.
-- Configure that server to use python and CGI
-- Create and set permissions on the following files as appropriate:
+- Configure that server to use python as CGI
+- Create and set permissions as follows on the following files:
 
-Files and permissions required by this application are:
- - /etc/bz-triage.cfg      - Read access
- - /var/log/bz-triage.log  - Write access
- - /var/local/bz-triage/contributors.cfg   - Read and write access.
+Files and permissions required by the web server for this application are:
+ - /etc/bz-triage.cfg                       - Read access
+ - /var/log/bz-triage.log                   - Write access
+ - /var/local/bz-triage/contributors.cfg    - Read and write access.
 
-The bz-triage.cfg file looks like this:
+bz-triage.cfg looks like this:
 
 {
 "server": "&lt;your Bugzilla server&gt;",

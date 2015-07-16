@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>All Hail King Canute</title>
+<title>I can't, but we can.</title>
 <link href="index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -15,15 +15,15 @@
 </p>
 </div>
 
-<div id="leftside">
+<div id="content">
 
 <p>
-Triage is the most important and least loved part of a bug's lifecycle, and
-Mozilla sees dozens or hundreds of new bugs filed every day.
+Sorting, filtering and analyzing bugs every day helps Mozilla find problems 
+sooner and ship great software to hundreds of millions of users. 
 </p>
 
 <p>
-iIf you can spare a few minutes per day you can help us fight back the tide. 
+If you can spare a few minutes a day, you can help Mozilla move faster. 
 Sign up below; enter your name, Bugzilla email address, and a maximum number
 of bugs we can send you.  
 </p>
@@ -61,25 +61,12 @@ How often?
 </p>
 </div>
 
-
-<div id="rightside">
 <p>
-We're also updating Bugzilla to make sorting new bugs into new categories fast
-and easy. Soon moving bugs to a new category will be a matter of a few seconds 
-and one step. 
-</p>
-<p>
-We can even simplify the triage process with 
-<a href="https://github.com/gijsk/triage-helper">the Triage-Helper addon</a>. 
-This will let triagers quickly ask contributors for a series of common next 
-steps, including reproducing the bug in a clean profile or safe mode, 
-narrowing down a test case, and others.
-</p>
-<p>
-If you're just getting started: Welcome! You'll need a Bugzilla account with <a href="https://bugzilla.mozilla.org/page.cgi?id=get_permissions.html">"CanConfirm"</a> 
-permissions to help. Once you have those, please take a moment to read these
+If you're just getting started with Mozilla's bug tracker, you'll also need to <a href="https://bugzilla.mozilla.org/createaccount.cgi">sign up for a Bugzilla account</a>
+and get <a href="https://bugzilla.mozilla.org/page.cgi?id=get_permissions.html">"CanConfirm" permissions to modify bugs.</a> 
+Once you 've got that, you're ready to go. Please take a moment bdto read these
 documents on <a href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Triaging_Bugs_for_Firefox">Effective
-bug triage for Firefox</a> and best practices for <a href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Confirming_unconfirmed_bugs">confirm
+bug triage for Firefox</a> and best practices for <a href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Confirming_unconfirmed_bugs">confirming
 unconfirmed bugs</a>.
 </p>
 </div>
