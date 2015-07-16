@@ -188,9 +188,12 @@ Please make some time to look through your set and look for ways to move the bug
       - Most importantly, sort the bug into the correct component:
         https://developer.mozilla.org/en-US/docs/Mozilla/QA/Confirming_unconfirmed_bugs
       - Search for similar bugs or duplicates and link them together if found
-      - Check the tags, title and description for clarity and precision
+        https://bugzilla.mozilla.org/duplicates.cgi
+      - Check the flags, title and description for clarity and precision
       - Ask for ( or provide! ) steps to reproduce in a clean profile or safe mode
+        https://developer.mozilla.org/en-US/docs/Mozilla/Multiple_Firefox_Profiles
       - Ask the reporter for related crash reports in about:crashes
+        https://developer.mozilla.org/en-US/docs/Crash_reporting
       - Provide suggestions on how to fix the bug
       - Does this look like a small fix? Add [good first bug] to the whiteboard!
 

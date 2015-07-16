@@ -57,7 +57,7 @@ def main():
        d = date.today() - timedelta(inc)
        bugdays[d] = getOutstandingBugs(bzagent, d)
     
-    print ('''<html>
+    print '''<html>
 <head>
 <title>All Hail King Canute</title>
 <link href="index.css" rel="stylesheet" type="text/css">
@@ -72,7 +72,7 @@ def main():
 </div>
 <div id="body">
 <h3>Number of contributors: %d</h3> 
-''', len(contributors))
+''' % (len(contributors))
    
     print '''</div>
 
@@ -82,10 +82,10 @@ Outstanding Bugs!
 '''
 
     for key in bugdays:
-        print '''<div class="dayheader">Outstanding bugs for %s: %s</div>''', str(key),  str(len(bugdays[key]))
+        print '''<div class="dayheader">Outstanding bugs for %s: %s</div>''' % (str(key),  str(len(bugdays[key])))
         print '''<div class="day"><blockquote>'''
         for boog in bugdays[key]:
-            print '''<a href="https://bugzilla.mozilla.org/%s">Bug %s</a>: %s''' % (boog.id, boog.id, boog.summary)
+            print '''<br/><a href="https://bugzilla.mozilla.org/%s">Bug %s</a>: %s''' % (boog.id, boog.id, boog.summary)
         print '''</blockquote></div>'''
 
     print "</body></html>"
@@ -147,7 +147,7 @@ def getOutstandingBugs(bzagent,someday):
         bugs = bzagent.get_bug_list(options) 
         buglist.extend(bugs)
   
-    print  date_to + " - " + str(len(buglist))
+    #print  date_to + " - " + str(len(buglist))
     return buglist
 
 
