@@ -60,24 +60,13 @@ How often?
 </form>
 </p>
 </div>
-
-<p>
-If you're just getting started with Mozilla's bug tracker, you'll also need to <a href="https://bugzilla.mozilla.org/createaccount.cgi">sign up for a Bugzilla account</a>
-and get <a href="https://bugzilla.mozilla.org/page.cgi?id=get_permissions.html">"CanConfirm" permissions to modify bugs.</a> 
-Once you 've got that, you're ready to go. Please take a moment bdto read these
-documents on <a href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Triaging_Bugs_for_Firefox">Effective
-bug triage for Firefox</a> and best practices for <a href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Confirming_unconfirmed_bugs">confirming
-unconfirmed bugs</a>.
-</p>
 </div>
-
-
 
 <div id="footer">
 <p>
-At the moment this is an experimental service. More development - including
-a proper "unsubscribe" - is on the way. <a href="https://docs.google.com/a/mozilla.com/forms/d/17H4GmPMZUgFdZEGLknmRxZOneH7A3-d1pvV2Qwctuko/viewform">To provide feedback,
-please use this form.</a> For more information, including (for now) how to unsubscribe, <a href="mailto:mhoye@mozilla.com">mail Mike Hoye</a>
+This is an experimental service. Email will arrive from "Triage Robot &lt;noreply@mozilla.com&gt;",
+and you can unsubcribe <a href="unsubscribe.py">here</a>. Please use <a href="https://docs.google.com/a/mozilla.com/forms/d/17H4GmPMZUgFdZEGLknmRxZOneH7A3-d1pvV2Qwctuko/viewform">
+this form</a> if you have any feedback, and for more information <a href="mailto:mhoye@mozilla.com">mail Mike Hoye</a>
 </div>
 
 </body>

@@ -10,6 +10,7 @@ import urllib2
 import sys
 import re
 import logging, logging.handlers
+import random
 from datetime import date, timedelta
 from os import mkdir
 from bugzilla.agents import BMOAgent
@@ -115,7 +116,7 @@ def main():
  
     for options in option_sets.values():
         bugs = bzagent.get_bug_list(options) 
-        buglist.extend(bugs)
+        buglist = list(set(buglist + bugs)) #add and dedupe
 
     logging.info("Found %s bugs in %s components." % (len(buglist), (len(option_sets)))) 
     logging.info("Reading in triage volunteer file.")
@@ -129,11 +130,9 @@ def main():
         exit(-1)
 
     print str(allcontributors)
-    # Assign bugs to contributors. There are a few ways we could do this, and this
-    # needs to be revisited for inclusiveness later. Best balance of inclusiveness
-    # and participation I've got is an even spread of bugs up to each individual's
-    # max, so: assign bugs to users one at a time, until you either run out of bugs
-    # or all users are at their chosen max.
+
+    # Assign bugs to contributors. The process below favors getting 
+    # some bugs to many people over getting many bugs to some people.
 
     today = list()
 
@@ -142,28 +141,32 @@ def main():
         or (contrib[3] == "workdays" and date.weekday(date.today()) < 5)   \
         or (contrib[3] == "weekly" and date.weekday(date.today()) == 0 ):
             today.append(contrib)
-  
+
+    # now dedupe and shuffle 
+
+    random.shuffle(today)
+    random.shuffle(buglist) 
+
+
     mailout = dict()
-    queue = list(today)
-     
+
     while True:
-        if not queue or not buglist: #once we've emptied one of them out...
+        if not today or not buglist: #once we've emptied one of them out...
             break
-        for t in queue:
+        for t in today:
             if t[0] in mailout:
                 mailout[t[0]].append(buglist.pop())
             else:
                 mailout[t[0]] = [ buglist.pop() ]
-            if not buglist:
-                break
             if len(mailout[t[0]]) >= int(t[2]):
-                 queue.remove(t)
-
+                 today.remove(t)
+            if not buglist:   # if we're out of bugs, bail out.
+                break
+     
     # Ok, let's email some bugs.
 
-
-    for rec in today:
-        content = "Hello, " + rec[1].encode("utf8") + '''
+    for rec in mailout.keys():
+        content = "Hello, " + rec.encode("utf8") + '''
 
 Triage is the most important part of a bug's lifecycle. By helping triage 
 incoming bugs, you're helping Mozilla and the Web get better and move faster.
@@ -173,17 +176,16 @@ Today we'd like you to look at the following bugs:
 
 '''
         bugurls = ""
-        for boog in mailout[rec[0]]:
+        for boog in mailout[rec]:
         # ADDBUGS HERE     
               bugurls += '''Bug %s - http://bugzilla.mozilla.org/%s - %s
 
-''' % (boog.id, boog.id, boog.summary)
+''' % ( str(boog.id).encode("utf-8"), str(boog.id).encode("utf-8"), str(boog.summary).encode("utf-8") )
         content += bugurls
 
 
         content += '''
-
-Please make some time to look through your set and look for ways to move the bugs forward:
+Please take some time to look through your set and look for ways to move the bugs forward:
 
       - Most importantly, sort the bug into the correct component:
         https://developer.mozilla.org/en-US/docs/Mozilla/QA/Confirming_unconfirmed_bugs
@@ -224,11 +226,11 @@ Again, thank you. If you have any questions or concerns about the this process, 
         msg = MIMEText(str(content).encode("utf8"))
         msg["Subject"] = str("Bugs to triage for %s" % (date.today()) ).encode("utf8")
         msg["From"] = cfg["smtp_user"].encode("utf8")
-        msg["To"] = rec[0].encode("utf8")
+        msg["To"] = rec.encode("utf8")
         #msg["Reply-To"] = "noreply@mozilla.com"
-        server.sendmail(sender, rec[0].encode("utf8") , msg.as_string())
+        server.sendmail(sender, rec.encode("utf8") , msg.as_string())
         server.quit()
-        logging.info("Mailed bugs to: " + rec[0].encode("utf8"))
+        logging.info("Mailed bugs to: " + rec.encode("utf8"))
 
 if __name__ == "__main__":
     main()
