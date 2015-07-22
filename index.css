@@ -25,21 +25,41 @@ IMG
 {
         text-align: center;
 }
-#leftside
+#content
 {
-        width: 390px;
-        float: left;
+        width: 800px;
+        float: center;
 }
-#rightside
+.form 
 {
-        width: 390px;
-        float: right;
+    width: 600px;
+    height: 2em;
+    float: center;
 }
+.label
+{
+    width: 200px;
+    height: 1.3em;
+    float:left;
+    text-align: right;
+}
+.choice
+{
+    width: 40px;
+    float: left;
+    padding-left: 10px;
+}
+.btn
+{
+  float: left;
+  margin: 1em;
+  margin-left: 100px;
+}
+
 
 #footer
 {
-  position: absolute;
-  bottom: 30px;
   width: 800px;
   text-align: center;
+  margin-top: 5em;
 }

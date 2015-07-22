@@ -81,7 +81,7 @@ Outstanding Bugs!
 </div>
 '''
 
-    for key in bugdays:
+    for key in list(reversed( sorted(bugdays.keys()))):
         print '''<div class="dayheader">Outstanding bugs for %s: %s</div>''' % (str(key),  str(len(bugdays[key])))
         print '''<div class="day"><blockquote>'''
         for boog in bugdays[key]:
