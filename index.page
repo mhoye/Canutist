@@ -60,8 +60,8 @@ so they can get to the right people with the right information.
 
 <div id="footer">
 This is an experimental service. Email will arrive from "Triage Robot &lt;noreply@mozilla.com&gt;",
-and you can unsubscribe <a href="unsubscribe.py">here</a>. Please use <a href="https://docs.google.com/a/mozilla.com/forms/d/17H4GmPMZUgFdZEGLknmRxZOneH7A3-d1pvV2Qwctuko/viewform">
-this form</a> if you have any feedback, and for more information <a href="mailto:mhoye@mozilla.com">mail Mike Hoye</a>
+and you can unsubscribe <a href="unsubscribe.py">here</a>. Please file any bugs <a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Community%20Building&component=Systems%20and%20Data">in
+Bugzilla under [Community Tools::Systems And Data]</a> and if you have any feedback, and for more information <a href="mailto:mhoye@mozilla.com">mail Mike Hoye</a>
 </div>
 
 </body>
