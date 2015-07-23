@@ -172,7 +172,8 @@ Triage is the most important part of a bug's lifecycle. By helping triage
 incoming bugs, you're helping Mozilla and the Web get better and move faster.
 Thank you.
     
-Today we'd like you to look at the following bugs:
+Today we'd like you to look at the following bugs. If you're able to act on them,
+please change their status from UNCONFIRMED to NEW.
 
 '''
         bugurls = ""
@@ -185,7 +186,7 @@ Today we'd like you to look at the following bugs:
 
 
         content += '''
-Please take some time to look through your set and look for ways to move the bugs forward:
+There are a few ways you can help move these bugs forward:
 
       - Most importantly, sort the bug into the correct component:
         https://developer.mozilla.org/en-US/docs/Mozilla/QA/Confirming_unconfirmed_bugs
