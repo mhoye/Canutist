@@ -11,35 +11,33 @@
 <div id="header">
 
 <p>
-<h2>The most important part of a software bug's life is triage.</h2>
+<h2>The most important part of a bug's life is triage.</h2>
 </p>
 </div>
 
 <div id="content">
 
 <p>
-Sorting, filtering and analyzing bugs every day helps Mozilla find problems 
+Sorting, filtering and analyzing our incoming bugs every day helps Mozilla find problems 
 sooner and ship great software to hundreds of millions of users. 
 </p>
 
 <p>
-If you can spare a few minutes a day, you can help Mozilla move faster. 
-Sign up below; enter your name, Bugzilla email address, and a maximum number
-of bugs we can send you.  
+If you can give us a few minutes of your day, you can help Mozilla move faster. 
+We'll send you an email with links to new issues our community is facing, and we'd
+like your help sorting them into the right components and asking the right questions,
+so they can get to the right people with the right information. 
 </p>
 
-<p>
-Once a week, five days a week or every day if you like, we'll send you an email 
-with links to new issues our community is facing so you can help get them 
-to the right place and the right person with the right information.
+<p>Sign up here:
 </p>
 
 <p>
 <form action="index.py" method="post">
-Name or IRC handle: <input type="text" name="nickname"/><br/>
-Email: <input type="text" name="email" /><br/>
-Number of bugs:
-<select name="number">
+<div class="form"><div class="label">Name or IRC handle:</div> <div class="choice"><input type="text" name="nickname"/></div></div>
+<div class="form"><div class="label">Email address:</div><div class="choice"><input type="text" name="email" /></div></div>
+<div class="form"><div class="label">Number of bugs:</div>
+<div class="choice"><select name="number">
 <option value="1">1</option>
 <option value="2">2</option>
 <option value="3">3</option>
@@ -47,25 +45,22 @@ Number of bugs:
 <option value="8">8</option>
 <option value="12">12</option>
 <option value="15">15</option>
-</select><br/>
-How often? 
-<select name="rate">
+</select></div></div>
+<div class="form"><div class="label">How often?</div> 
+<div class="choice"><select name="rate">
 <option value="daily">Daily</option>
 <option value="workdays">Mon-Fri</option>
 <option value="weekly">Weekly</option>
-</select>
-</p>
-<p>
- <input type="submit" value="Submit"></p>
+</select></div></div>
+<div class="form"><div class="label">&nbsp;</div><div class="choice"><input type="submit" value="Submit"></div></div></p>
 </form>
 </p>
 </div>
 </div>
 
 <div id="footer">
-<p>
 This is an experimental service. Email will arrive from "Triage Robot &lt;noreply@mozilla.com&gt;",
-and you can unsubcribe <a href="unsubscribe.py">here</a>. Please use <a href="https://docs.google.com/a/mozilla.com/forms/d/17H4GmPMZUgFdZEGLknmRxZOneH7A3-d1pvV2Qwctuko/viewform">
+and you can unsubscribe <a href="unsubscribe.py">here</a>. Please use <a href="https://docs.google.com/a/mozilla.com/forms/d/17H4GmPMZUgFdZEGLknmRxZOneH7A3-d1pvV2Qwctuko/viewform">
 this form</a> if you have any feedback, and for more information <a href="mailto:mhoye@mozilla.com">mail Mike Hoye</a>
 </div>
 

@@ -34,6 +34,7 @@ def main():
     index = open("index.page")
     next = open("next.page")
     if (form.has_key("email") and form.has_key("nickname") and form.has_key("number") and form.has_key("rate")):
+        logging.info("--- got here.")
         emit(next)
         store(form.getvalue("email").encode("utf-8"), 
               form.getvalue("nickname").encode("utf-8"), 
