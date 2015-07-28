@@ -54,13 +54,15 @@ def main():
         exit(-1)
 
     # We're picking our options about what bugs to search for now.
-# We're hardcoding some assumptions about interesting date range
-# and bug categories here.
-# Those components are:
-# - Firefox, Core and Triaged "Untriaged", respectively, or
-# - In one of the Firefox, Core or Toolkit categories, and UNCONFIRMED
+    # We're hardcoding some assumptions about interesting date range
+    # and bug categories here.
+    # Those components are:
+    # - Firefox, Core and Triaged "Untriaged", respectively, or
+    # - In one of the Firefox, Core or Toolkit categories, and UNCONFIRMED
 
-    # this is today-1 and today-2 because it's intended to run in a cron job at 1 AM.
+    # This is today-1 and today-3 because it's intended to run in a cron job at 3 AM,
+    # and have some overlap with the previous day, so we get a floating window across
+    # our incoming bugs. 
 
     date_to    = str(date.isoformat(date.today() - timedelta(1))).encode("utf8")
     date_from  = str(date.isoformat(date.today() - timedelta(2))).encode("utf8")
