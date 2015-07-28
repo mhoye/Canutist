@@ -100,43 +100,27 @@ def getOutstandingBugs(bzagent,someday):
     # seem to work with the "product=foo,bar" syntax, despite what the docs say
 
     option_sets = {
-        'firefox': {
-            'changed_field':'[Bug creation]',
-            'changed_after':date_from,
-            'changed_before':   date_to,
-            'product':  'Firefox',
-            'status':   'UNCONFIRMED'  },
-        'core': {
-            'changed_field':'[Bug creation]',
-            'changed_after':date_from,
-            'changed_before':   date_to,
-            'product':  'Core',
-            'status':   'UNCONFIRMED'  },
-        'toolkit': {
-            'changed_field':'[Bug creation]',
-            'changed_after':date_from,
-            'changed_before':   date_to,
-            'product':  'Toolkit',
-            'status':   'UNCONFIRMED'},
         'firefox_untriaged': {
             'changed_field':'[Bug creation]',
             'changed_after':date_from,
             'changed_before':   date_to,
             'product':  'Firefox',
-            'component':'Untriaged'},
+            'component':'Untriaged',
+            'status': 'UNCONFIRMED'},
         'core_untriaged': {
             'changed_field':'[Bug creation]',
             'changed_after':date_from,
             'changed_before':   date_to,
             'product':  'Toolkit',
-            'component':'Untriaged'},
+            'component':'Untriaged',
+            'status': 'UNCONFIRMED'},
         'toolkit_untriaged': {
             'changed_field':'[Bug creation]',
             'changed_after':date_from,
             'changed_before':   date_to,
             'product':  'Core',
-            'component':'Untriaged'
-           },
+            'component':'Untriaged',
+            'status': 'UNCONFIRMED'},
         }
 
     buglist = list()
