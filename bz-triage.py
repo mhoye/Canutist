@@ -174,8 +174,7 @@ Triage is the most important part of a bug's lifecycle. By helping triage
 incoming bugs, you're helping Mozilla and the Web get better and move faster.
 Thank you.
     
-Today we'd like you to look at the following bugs. If you're able to act on them,
-please change their status from UNCONFIRMED to NEW.
+Today we'd like you to look at the following bugs. 
 
 '''
         bugurls = ""
@@ -211,7 +210,7 @@ If you're just getting started and aren't sure how to proceed, this link will he
         https://developer.mozilla.org/en-US/docs/Mozilla/QA/Triaging_Bugs_for_Firefox
 
 As always, the point of this exercise is to get the best information possible in front the right engineers.
-After some or all the above has been attempted, you can bump the status of the bug from "unconfirmed" to "new"
+If you can reproduce them or isolate a test case, please change the status of the bug from "unconfirmed" to "new"
 to bring it to their attention.
 
 Again, thank you. If you have any questions or concerns about the this process, you can join us on IRC in the
