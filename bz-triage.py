@@ -166,8 +166,9 @@ def main():
                 break
      
     # Ok, let's email some bugs.
-
+    mailoutlog = ""
     for rec in mailout.keys():
+        mailoutlog = rec.encode("utf8")
         content = "Hello, " + rec.encode("utf8") + '''
 
 Triage is the most important part of a bug's lifecycle. By helping triage 
@@ -179,8 +180,8 @@ Today we'd like you to look at the following bugs.
 '''
         bugurls = ""
         for boog in mailout[rec]:
-        # ADDBUGS HERE     
-              bugurls += '''Bug %s - http://bugzilla.mozilla.org/%s - %s
+            mailoutlog += " " + str(boog.id).encode("utf-8")
+            bugurls += '''Bug %s - http://bugzilla.mozilla.org/%s - %s
 
 ''' % ( str(boog.id).encode("utf-8"), str(boog.id).encode("utf-8"), str(boog.summary).encode("utf-8") )
         content += bugurls
@@ -232,7 +233,7 @@ Again, thank you. If you have any questions or concerns about the this process, 
         #msg["Reply-To"] = "noreply@mozilla.com"
         server.sendmail(sender, rec.encode("utf8") , msg.as_string())
         server.quit()
-        logging.info("Mailed bugs to: " + rec.encode("utf8"))
+        logging.info(mailoutlog)
 
 if __name__ == "__main__":
     main()
