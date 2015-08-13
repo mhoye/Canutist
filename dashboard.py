@@ -4,7 +4,6 @@
 # Email: mhoye@mozilla.com
 # License: MPL
 
-import smtplib
 import json
 import urllib2
 import sys
@@ -14,8 +13,7 @@ from datetime import date, timedelta
 from os import mkdir
 from bugzilla.agents import BMOAgent
 from bugzilla.utils import get_credentials
-from email.mime.text import MIMEText
-
+from xml.sax.saxutils import escape
 
 def main():
 
@@ -85,7 +83,7 @@ Outstanding Bugs!
         print '''<div class="dayheader">Outstanding bugs for %s: %s</div>''' % (str(key),  str(len(bugdays[key])))
         print '''<div class="day"><blockquote>'''
         for boog in bugdays[key]:
-            print '''<br/><a href="https://bugzilla.mozilla.org/%s">Bug %s</a>: %s''' % (boog.id, boog.id, boog.summary)
+            print '''<br/><a href="https://bugzilla.mozilla.org/%s">Bug %s</a>: %s''' % (boog.id, boog.id, escape(boog.summary))
         print '''</blockquote></div>'''
 
     print "</body></html>"
