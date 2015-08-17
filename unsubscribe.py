@@ -21,21 +21,18 @@ def main():
         logging.root.addHandler(sh)
 
     rfh = logging.handlers.RotatingFileHandler("/var/log/bz-signup.log",
-                                               backupCount=10,
-                                               maxBytes=100000)
+                                               backupCount=10)
     rfh.setFormatter(fmt)
     rfh.setLevel(logging.DEBUG)
     logging.root.addHandler(rfh)
     logging.root.setLevel(logging.DEBUG)
 
-    logging.info("---- Starting unsubscribe session... ----")
-
     form = cgi.FieldStorage()
     unsub = open("unsubscribe.page")
     goodbye = open("goodbye.page")
     if (form.has_key("email")):
-        emit(goodbye)
         remove(form.getvalue("email").encode("utf-8"))
+        emit(goodbye)
     else:
         emit(unsub)
  
@@ -44,7 +41,7 @@ def emit(text):
     print 
     print(file.read(text)) 
 
-def store(email,nickname,number,rate):
+def remove(email):
     # User-entered data hits the filesystem here.  
     if not validate_email(email):
         return
@@ -52,19 +49,16 @@ def store(email,nickname,number,rate):
 
     lock = LockFile("/var/local/bz-triage/contributors.cfg")
     lock.acquire()
-    
     try:  
         contributors = json.load(open("/var/local/bz-triage/contributors.cfg"))
-        logging.info("File open...")
     except:
         logging.info("Failed to open the file...")
-    
+
     for existing in contributors:
         if existing[0] == checked_email:
             contributors.remove(existing)
-            logging.info("Removing contributor.")
+            logging.info("unsubscribing user: " + checked_email)
 
-    logging.info("Writing table to disk.") 
     with open("/var/local/bz-triage/contributors.cfg", 'w') as outfile:
         json.dump(contributors, outfile)
     lock.release()

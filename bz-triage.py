@@ -30,8 +30,7 @@ def main():
         logging.root.addHandler(sh)
 
     rfh = logging.handlers.RotatingFileHandler("/var/log/bz-triage.log",
-                                               backupCount=10,
-                                               maxBytes=1000000)
+                                               backupCount=10)
     rfh.setFormatter(fmt)
     rfh.setLevel(logging.DEBUG)
     logging.root.addHandler(rfh)
