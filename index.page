@@ -25,7 +25,8 @@ sooner and ship great software to hundreds of millions of users.
 <p>
 If you can give us a few minutes of your day, you can help Mozilla move faster. 
 We'll send you an email with links to new issues our community is facing, and we'd
-like your help sorting them into the right components and asking the right questions,
+like your help finding regression ranges, figuring out the steps to reproduce them, 
+sorting them into the right components and asking the right questions,
 so they can get to the right people with the right information. 
 </p>
 
@@ -36,7 +37,7 @@ so they can get to the right people with the right information.
 <form action="index.py" method="post">
 <div class="form"><div class="label">Name or IRC handle:</div> <div class="choice"><input type="text" name="nickname"/></div></div>
 <div class="form"><div class="label">Email address:</div><div class="choice"><input type="text" name="email" /></div></div>
-<div class="form"><div class="label">Number of bugs:</div>
+<div class="form"><div class="label">How many bugs?</div>
 <div class="choice"><select name="number">
 <option value="1">1</option>
 <option value="2">2</option>
@@ -44,7 +45,6 @@ so they can get to the right people with the right information.
 <option value="5">5</option>
 <option value="8">8</option>
 <option value="12">12</option>
-<option value="15">15</option>
 </select></div></div>
 <div class="form"><div class="label">How often?</div> 
 <div class="choice"><select name="rate">
@@ -52,6 +52,8 @@ so they can get to the right people with the right information.
 <option value="workdays">Mon-Fri</option>
 <option value="weekly">Weekly</option>
 </select></div></div>
+<div class="form"><div class="label">I can help to reproduce bugs:</div><div class="choice"><input type="checkbox" name="strs" /></div></div>
+<div class="form"><div class="label">I can find regression ranges:</div><div class="choice"><input type="checkbox" name="regressions" /></div></div>
 <div class="form"><div class="label">&nbsp;</div><div class="choice"><input type="submit" value="Submit"></div></div></p>
 </form>
 </p>

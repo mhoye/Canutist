@@ -35,7 +35,10 @@ def main():
         store(form.getvalue("email").encode("utf-8"), 
               form.getvalue("nickname").encode("utf-8"), 
               form.getvalue("number").encode("utf-8"),
-              form.getvalue("rate").encode("utf-8") )
+              form.getvalue("rate").encode("utf-8"),
+              form.getvalue("strs").encode("utf-8"),
+              form.getvalue("regressions").encode("utf-8"))
+              
     else:
         emit(index)
  
@@ -45,12 +48,17 @@ def emit(text):
     print 
     print(file.read(text)) 
 
-def store(email,nickname,number,rate):
+def store(email,nickname,number,rate,strs,regressions):
     # User-entered data hits the filesystem here.  
     if not validate_email(email):
         return
 
-    newcontrib = [ bleach.clean(email), bleach.clean(nickname), bleach.clean(number), bleach.clean(rate)]
+    newcontrib = [ bleach.clean(email), 
+                   bleach.clean(nickname), 
+                   bleach.clean(number), 
+                   bleach.clean(rate),
+                   bleach.clean(strs),
+                   bleach.clean(regressions)]
 
     lock = LockFile("/var/local/bz-triage/contributors.cfg")
     lock.acquire()
