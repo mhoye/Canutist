@@ -327,16 +327,15 @@ We need to figure out the steps to reproduce the following bugs:
 
 There are a few things you can do to move these bugs forward:
 
-- Most importantly, sort the bug into the correct component: https://developer.mozilla.org/en-US/docs/Mozilla/QA/Confirming_unconfirmed_bugs
-- Use MozRegression to figure out exactly when a bug was introduced. You can learn about MozRegression here: http://mozilla.github.io/mozregression/
-- Search for similar bugs or duplicates and link them together if found: https://bugzilla.mozilla.org/duplicates.cgi
-- Check the flags, title and description for clarity and precision
-- Ask the reporter for related crash reports in about:crashes https://developer.mozilla.org/en-US/docs/Crash_reporting
-- Does this look like a small fix? Add [good first bug] to the whiteboard!
+  - Most importantly, sort the bug into the correct component: https://developer.mozilla.org/en-US/docs/Mozilla/QA/Confirming_unconfirmed_bugs
+  - Use MozRegression to figure out exactly when a bug was introduced. You can learn about MozRegression here: http://mozilla.github.io/mozregression/
+  - Search for similar bugs or duplicates and link them together if found: https://bugzilla.mozilla.org/duplicates.cgi
+  - Check the flags, title and description for clarity and precision
+  - Ask the reporter for related crash reports in about:crashes https://developer.mozilla.org/en-US/docs/Crash_reporting
+  - Does this look like a small fix? Add [good first bug] to the whiteboard!
 
 If you're just getting started and aren't sure how to proceed, this link will help:
-
-        https://developer.mozilla.org/en-US/docs/Mozilla/QA/Triaging_Bugs_for_Firefox
+  - https://developer.mozilla.org/en-US/docs/Mozilla/QA/Triaging_Bugs_for_Firefox
 
 As always, the point of this exercise is to get the best information possible in front the right engineers. If you can reproduce them or isolate a test case, please add that information to the bug and change the status from "UNCONFIRMED" to "NEW".
 
