@@ -33,8 +33,7 @@ def main():
     logging.root.addHandler(rfh)
     logging.root.setLevel(logging.DEBUG)
 
-    logging.info("Generating static audit page for previous ten days.")
-    logging.info("loading config... ")
+    logging.info("Generating static audit page.")
     cfg = json.load(open("/etc/bz-triage.cfg"))
 
     server = cfg["server"].encode("utf8")
@@ -46,7 +45,6 @@ def main():
     try:
         contributors = json.load(open("/var/local/bz-triage/contributors.cfg"))
         bzagent = BMOAgent(user,password)
-        logging.info("Data sources obtained.")
     except:
         logging.info("Failed to obtain data sources.")
         exit(-1) 
@@ -90,7 +88,7 @@ Outstanding Bugs!
 
 def getOutstandingBugs(bzagent,someday):
 
-    date_from  = str(date.isoformat(someday - timedelta(1))).encode("utf8")
+    date_from  = str(date.isoformat(someday)).encode("utf8")
     date_to    = str(date.isoformat(someday)).encode("utf8")
 
     # NOTE: The reason it's laid out like this is because bztools doesn't

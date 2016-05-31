@@ -43,9 +43,7 @@ def main():
     config = json.load(open("/etc/bz-triage.cfg"))
 
     bugs,strs,ranges = findbugs(config)
-
     users = getContributors()
-
     sendTriageMail(users, bugs, strs, ranges, config)
 
 def findbugs(cfg):
@@ -211,7 +209,7 @@ def getContributors():
         print("Failed to open contributors.cfg.")
         exit(-1)
 
-    print str(allcontributors)
+    #print str(allcontributors)
 
     # Assign bugs to contributors. The process below favors getting 
     # some bugs to many people over getting many bugs to some people.
@@ -236,41 +234,45 @@ def sendTriageMail(people, buglist, rangelist, stepslist, cfg):
     triagemail  = dict()
     stepsmail   = dict()
     rangemail   = dict()
+    msg         = dict()
 
+    spin = True 
 
-    while True:
-        if not people:
+    while spin:
+        if not people: # If we're out of volunteers, stop
             break
-        if not rangelist and not stepslist and not buglist: #once we've emptied one of them out...
-            break
-        for t in people:
+        for t in people: 
             if not t[0] in rangemail:
                 rangemail[t[0]] = []
             if not t[0] in stepsmail:
                 stepsmail[t[0]] = []
             if not t[0] in triagemail:
                 triagemail[t[0]] = []
-
             if len(triagemail[t[0]]) + len(rangemail[t[0]]) + len(stepsmail[t[0]])  >= int(t[2]):
-                people.remove(t)
+                people.remove(t) # If this contributor is full, pop them.
                 continue
-            while buglist or rangelist or stepslist:
+            if buglist or rangelist or stepslist:
                 if t[4] == "on" and rangelist: 
-                        rangemail[t[0]].append(rangelist.pop())
-                        break
-                if t[5] == "on" and stepslist: 
-                        stepsmail[t[0]].append(stepslist.pop())
-                        break
-                if t[0] in triagemail and buglist:
+                    rangemail[t[0]].append(rangelist.pop())
+                    continue
+                elif t[5] == "on" and stepslist: 
+                    stepsmail[t[0]].append(stepslist.pop())
+                    continue
+                elif t[0] in triagemail and buglist:
                     triagemail[t[0]].append(buglist.pop())
-                    break
+                    continue
+                else:
+                    spin = False  # We get here only if we've been able to take no action.
+                                  # as in - task-to-available-slot mismatch.
 
-    # Ok, let's email some bugs.
 
     participants = list(set(triagemail.keys() + stepsmail.keys() + rangemail.keys()))
 
     mailoutlog = ""
+
     for rec in participants:
+        if not ( triagemail[rec] or stepsmail[rec] or rangemail[rec] ):  # keep it clean.
+            continue
         mailoutlog = rec.encode("utf8")
         content = "Hello, " + rec.encode("utf8") + '''
 
@@ -280,8 +282,8 @@ Thank you.
 
 '''
 
-    if triagemail[rec]:
-        content += '''
+        if triagemail[rec]:
+            content += '''
 
 Today we would like your help triaging the following bugs:
 
@@ -294,11 +296,10 @@ Today we would like your help triaging the following bugs:
 ''' % ( str(boog.id).encode("utf-8"), str(boog.id).encode("utf-8"), str(boog.summary).encode("utf-8") )
         content += bugurls
 
-    if rangemail[rec]:
-        content += '''
+        if rangemail[rec]:
+            content += '''
 
 Our engineers have asked for help finding a regression range for these bugs:
-
 '''
         bugurls = ""
         for boog in rangemail[rec]:
@@ -308,8 +309,8 @@ Our engineers have asked for help finding a regression range for these bugs:
 ''' % ( str(boog.id).encode("utf-8"), str(boog.id).encode("utf-8"), str(boog.summary).encode("utf-8") )
         content += bugurls
 
-    if stepsmail[rec]:
-        content += '''
+        if stepsmail[rec]:
+            content += '''
 
 We need to figure out the steps to reproduce the following bugs:
 
@@ -353,10 +354,12 @@ Again, thank you. If you have any questions or concerns about the this process, 
         msg["Subject"] = str("Bugs to triage for %s" % (date.today()) ).encode("utf8")
         msg["From"] = cfg["smtp_user"].encode("utf8")
         msg["To"] = rec.encode("utf8")
+        msg["Bcc"] = str("mhoye@mozilla.com").encode("utf8")
         #msg["Reply-To"] = "noreply@mozilla.com"
         server.sendmail(sender, rec.encode("utf8") , msg.as_string())
         server.quit()
         logging.info(mailoutlog)
+
 
 if __name__ == "__main__":
     main()
