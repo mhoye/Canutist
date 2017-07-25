@@ -7,6 +7,26 @@
 class { 'nubis_apache':
 }
 
+file { '/var/log/bz-signup.log':
+  ensure  => 'present',
+  owner   => 'www-data',
+  group   => 'www-data',
+  require => [
+    Class['nubis_apache'],
+  ],
+}
+
+file { '/var/log/bz-triage.log':
+  ensure  => 'present',
+  owner   => 'www-data',
+  group   => 'www-data',
+  require => [
+    Class['nubis_apache'],
+  ],
+}
+
+class { 'apache::mod::cgid': }
+
 apache::vhost { $project_name:
     port               => 80,
     default_vhost      => true,
