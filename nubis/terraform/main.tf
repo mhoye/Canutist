@@ -6,7 +6,6 @@ module "worker" {
   service_name      = "${var.service_name}"
   ami               = "${var.ami}"
   elb               = "${module.load_balancer.name}"
-  instance_type     = "${var.instance_type}"
   nubis_sudo_groups = "team_webops,nubis_global_admins"
 }
 
