@@ -35,3 +35,7 @@ python::pip { 'bleach':
 python::pip { 'python-dateutil':
   ensure => '2.6.1',
 }
+
+python::pip { 'six':
+  ensure => '1.10.0',
+}

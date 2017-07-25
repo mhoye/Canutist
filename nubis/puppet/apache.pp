@@ -22,18 +22,17 @@ apache::vhost { $project_name:
     access_log_env_var => '!internal',
     access_log_format  => '%a %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\"',
 
-    directoryindex     => [ 'index.py','index.html' ],
-
     directories        => [
       {
-        path        => "/var/www/${project_name}",
-        addhandlers => [
+        path           => "/var/www/${project_name}",
+        directoryindex => 'index.py index.html',
+        addhandlers    => [
           {
             handler    => 'cgi-script',
             extensions => ['.py']
           }
         ],
-        options     => ['+ExecCGI'],
+        options        => ['+ExecCGI'],
       },
     ],
 
