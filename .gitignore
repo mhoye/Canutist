@@ -1,1 +1,13 @@
-bz-triage.cfg
+# Do not track secrets
+nubis/cloudformation/parameters*
+!nubis/cloudformation/parameters.json-dist
+nubis/librarian-puppet.tar.gz
+nubis/librarian-puppet
+nubis/Puppetfile.lock
+nubis/.tmp
+nubis/.librarian
+nubis/builder/artifacts/*
+nubis/builder/variables.json
+nubis/terraform/terraform.tfstate*
+nubis/terraform/.terraform
+nubis/terraform/terraform.tfvars*
