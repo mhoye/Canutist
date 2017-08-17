@@ -7,7 +7,9 @@ module "worker" {
   ami               = "${var.ami}"
   elb               = "${module.load_balancer.name}"
   nubis_sudo_groups = "team_webops,nubis_global_admins"
+  wait_for_capacity_timeout = "20m"
 }
+
 
 module "load_balancer" {
   source       = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v1.5.0"
