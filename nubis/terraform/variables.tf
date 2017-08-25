@@ -14,4 +14,9 @@ variable "service_name" {
   default = "planet"
 }
 
+variable "instance_type" {
+  default = "t2.micro"
+}
+
+
 variable "ami" {}
