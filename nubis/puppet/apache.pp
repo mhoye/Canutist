@@ -18,7 +18,7 @@ file { '/var/log/bz-signup.log':
 
 file { '/var/local/bz-triage':
   ensure  => 'present',
-  targert => "/data/${project_name}", 
+  target => "/data/${project_name}", 
 }
 
 file { '/var/log/bz-triage.log':
