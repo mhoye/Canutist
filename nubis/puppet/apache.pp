@@ -18,12 +18,7 @@ file { '/var/log/bz-signup.log':
 
 file { '/var/local/bz-triage':
   ensure  => 'present',
-  owner   => 'www-data',
-  group   => 'www-data',
-  mode    => '0755',
-  require => [
-    Class['nubis_apache'],
-  ], 
+  targert => "/data/${project_name}",, 
 }
 
 file { '/var/log/bz-triage.log':
