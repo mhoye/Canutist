@@ -17,7 +17,7 @@ file { '/var/log/bz-signup.log':
 }
 
 file { '/var/local/bz-triage':
-  ensure  => 'present',
+  ensure  => 'link',
   target => "/data/${project_name}", 
 }
 
