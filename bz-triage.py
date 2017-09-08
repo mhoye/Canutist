@@ -344,15 +344,16 @@ Again, thank you. If you have any questions or concerns about the this process, 
 
 '''
         smtp = cfg["smtp_server"].encode("utf8")
-        sender = cfg["smtp_user"].encode("utf8")
-        server = smtplib.SMTP(smtp)
-        server.set_debuglevel(True)
+        sender = cfg["smtp_from"].encode("utf8")
+        server = smtplib.SMTP(smtp, 587)
+        #server.set_debuglevel(True)
         #server.connect(smtp)
         server.ehlo()
-        #server.login(sender, cfg["smtp_pass"].encode("utf8"))
+        server.starttls()
+        server.login(cfg["smtp_user"], cfg["smtp_password"].encode("utf8"))
         msg = MIMEText(str(content).encode("utf8"))
         msg["Subject"] = str("Bugs to triage for %s" % (date.today()) ).encode("utf8")
-        msg["From"] = cfg["smtp_user"].encode("utf8")
+        msg["From"] = cfg["smtp_from"].encode("utf8")
         msg["To"] = rec.encode("utf8")
         msg["Bcc"] = str("mhoye@mozilla.com").encode("utf8")
         #msg["Reply-To"] = "noreply@mozilla.com"
