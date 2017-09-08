@@ -7,7 +7,11 @@ module "worker" {
   ami               = "${var.ami}"
   elb               = "${module.load_balancer.name}"
   nubis_sudo_groups = "team_webops,nubis_global_admins"
+  instance_type     = "${var.instance_type}"
+  wait_for_capacity_timeout = "20m"
+  health_check_grace_period = "600"
 }
+
 
 module "load_balancer" {
   source       = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v1.5.0"
@@ -16,7 +20,7 @@ module "load_balancer" {
   account      = "${var.account}"
   service_name = "${var.service_name}"
 
-  health_check_target = "HTTP:80/"
+  health_check_target = "HTTP:80/index.css"
 }
 
 module "dns" {
@@ -26,4 +30,22 @@ module "dns" {
   account      = "${var.account}"
   service_name = "${var.service_name}"
   target       = "${module.load_balancer.address}"
+}
+
+module "storage" {
+  source                 = "github.com/nubisproject/nubis-terraform//storage?ref=v1.5.0"
+  region                 = "${var.region}"
+  environment            = "${var.environment}"
+  account                = "${var.account}"
+  service_name           = "${var.service_name}"
+  storage_name           = "${var.service_name}"
+  client_security_groups = "${module.worker.security_group}"
+}
+
+module "mail" {
+  source       = "github.com/nubisproject/nubis-terraform//mail?ref=develop"
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
 }
