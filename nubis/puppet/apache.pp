@@ -16,7 +16,7 @@ file { '/var/log/bz-signup.log':
   ],
 }
 
-file { '/var/www/${project_name}/dashboard.html':
+file { "/var/www/${project_name}/dashboard.html":
   ensure  => 'present',
   owner   => 'www-data',
   group   => 'www-data',
