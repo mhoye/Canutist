@@ -8,3 +8,9 @@ cron::daily { "${project_name}-bztriage":
  user	 => 'www-data',
  command => "nubis-cron ${project_name}-bztriage /var/www/${project_name}/bz-triage.py >/dev/null 2>&1",
 }
+
+cron::daily { "${project_name}-bznag":
+ hour	 => '4',
+ user    => 'www-data',
+ command => "nubis-cron ${project_name}-bztriage /var/www/${project_name}/bznag.py > /dev/null 2>&1",
+}
