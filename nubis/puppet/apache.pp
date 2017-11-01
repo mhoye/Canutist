@@ -39,6 +39,15 @@ file { '/var/log/bz-triage.log':
   ],
 }
 
+file { '/var/log/bznag.log':
+  ensure  => 'present',
+  owner   => 'www-data',
+  group   => 'www-data',
+  require => [
+    Class['nubis_apache'],
+  ],
+}
+
 class { 'apache::mod::cgid': }
 
 apache::vhost { $project_name:
