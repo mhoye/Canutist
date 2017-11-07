@@ -1,0 +1,31 @@
+#!/bin/bash -l
+
+echo "Making sure our files exist"
+
+PARTICIPANTS=/var/local/bznag/bznag-participants.cfg
+if [ ! -f "$PARTICIPANTS" ]; then
+  echo "Initlaizing $PARTICIPANTS"
+  echo '{}' > "$PARTICIPANTS"
+else
+  echo "Validating $PARTICIPANTS"
+  if ! jq . < "$PARTICIPANTS" > /dev/null; then
+    echo "$PARTICIPANTS: syntax fail"
+    jq . < "$PARTICIPANTS"
+    exit 1
+  fi
+fi
+
+CONTRIBUTORS=/var/local/bz-triage/contributors.cfg
+if [ ! -f "$CONTRIBUTORS" ]; then
+  echo "Initlaizing $CONTRIBUTORS"
+  echo '[]' > "$CONTRIBUTORS"
+else
+  echo "Validating $CONTRIBUTORS"
+  if ! jq . < "$CONTRIBUTORS" > /dev/null; then
+    echo "$CONTRIBUTORS: syntax fail"
+    jq . < "$CONTRIBUTORS"
+    exit 1
+  fi
+fi
+
+
