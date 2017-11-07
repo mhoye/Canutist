@@ -46,11 +46,10 @@ def main():
 
     sendSLAMail(alerts, recipients, config)
 
-
-    pp.pprint(alerts)
-    pp.pprint(recipients)
-    pp.pprint(config)
-
+    # Debugging
+    #pp.pprint(alerts)
+    #pp.pprint(recipients)
+    #pp.pprint(config)
 
     for derp in alerts.keys():
         pp.pprint(alerts[derp]['stale'])
