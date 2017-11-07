@@ -5,8 +5,8 @@ cron::hourly { "${project_name}-dashboard":
 
 file { '/var/log/bzdashboard-cron.log':
   ensure  => 'present',
-  owner   => 'www-data',
-  group   => 'www-data',
+  owner => $apache::params::user,
+  group => $apache::params::group,
   require => [
     Class['nubis_apache'],
   ],
@@ -14,14 +14,14 @@ file { '/var/log/bzdashboard-cron.log':
 
 cron::daily { "${project_name}-bztriage":
  hour    => '3',
- user	 => 'www-data',
+ user	 => $apache::params::user,
  command => "nubis-cron ${project_name}-bztriage /var/www/${project_name}/bz-triage.py > /var/log/bztriage-cron.log 2>&1",
 }
 
 file { '/var/log/bztriage-cron.log':
   ensure  => 'present',
-  owner   => 'www-data',
-  group   => 'www-data',
+  owner => $apache::params::user,
+  group => $apache::params::group,
   require => [
     Class['nubis_apache'],
   ],
@@ -29,14 +29,14 @@ file { '/var/log/bztriage-cron.log':
 
 cron::daily { "${project_name}-bznag":
  hour	 => '4',
- user    => 'www-data',
+ user    => $apache::params::user,
  command => "nubis-cron ${project_name}-bztriage /var/www/${project_name}/bznag.py > /var/log/bznag-cron.log 2>&1",
 }
 
 file { '/var/log/bznag-cron.log':
   ensure  => 'present',
-  owner   => 'www-data',
-  group   => 'www-data',
+  owner => $apache::params::user,
+  group => $apache::params::group,
   require => [
     Class['nubis_apache'],
   ],
