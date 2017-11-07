@@ -30,7 +30,7 @@ file { '/var/log/bztriage-cron.log':
 cron::daily { "${project_name}-bznag":
   hour    => '4',
   user    => $apache::params::user,
-  command => "nubis-cron ${project_name}-bztriage /var/www/${project_name}/bznag.py > /var/log/bznag-cron.log 2>&1",
+  command => "nubis-cron ${project_name}-bznag /var/www/${project_name}/bznag.py > /var/log/bznag-cron.log 2>&1",
 }
 
 file { '/var/log/bznag-cron.log':
