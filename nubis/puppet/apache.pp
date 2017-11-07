@@ -6,7 +6,7 @@
 
 class { 'nubis_apache':
   # Run this on boot to ensure we are good to go
-  update_script_source=puppet:///nubis/files/startup,
+  update_script_source => 'puppet:///nubis/files/startup',
 }
 
 file { '/var/log/bz-signup.log':
