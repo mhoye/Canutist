@@ -30,6 +30,11 @@ file { '/var/local/bz-triage':
   target => "/data/${project_name}",
 }
 
+file { '/var/local/bznag':
+  ensure => 'link',
+  target => "/data/${project_name}",
+}
+
 file { '/var/log/bz-triage.log':
   ensure  => 'present',
   owner   => $apache::params::user,
