@@ -9,8 +9,8 @@ class { 'nubis_apache':
 
 file { '/var/log/bz-signup.log':
   ensure  => 'present',
-  owner => $apache::params::user,
-  group => $apache::params::group,
+  owner   => $apache::params::user,
+  group   => $apache::params::group,
   require => [
     Class['nubis_apache'],
   ],
@@ -18,22 +18,22 @@ file { '/var/log/bz-signup.log':
 
 file { "/var/www/${project_name}/dashboard.html":
   ensure  => 'present',
-  owner => $apache::params::user,
-  group => $apache::params::group,
+  owner   => $apache::params::user,
+  group   => $apache::params::group,
   require => [
     Class['nubis_apache'],
   ],
 }
 
 file { '/var/local/bz-triage':
-  ensure  => 'link',
-  target => "/data/${project_name}", 
+  ensure => 'link',
+  target => "/data/${project_name}",
 }
 
 file { '/var/log/bz-triage.log':
   ensure  => 'present',
-  owner => $apache::params::user,
-  group => $apache::params::group,
+  owner   => $apache::params::user,
+  group   => $apache::params::group,
   require => [
     Class['nubis_apache'],
   ],
@@ -41,8 +41,8 @@ file { '/var/log/bz-triage.log':
 
 file { '/var/log/bznag.log':
   ensure  => 'present',
-  owner => $apache::params::user,
-  group => $apache::params::group,
+  owner   => $apache::params::user,
+  group   => $apache::params::group,
   require => [
     Class['nubis_apache'],
   ],
