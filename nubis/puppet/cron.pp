@@ -3,7 +3,7 @@ $bztriage_command = "nubis-cron ${project_name}-bztriage /var/www/${project_name
 $bznag_command = "nubis-cron ${project_name}-bznag /var/www/${project_name}/bznag.py > /var/log/bznag-cron.log 2>&1"
 
 # Run it once on boot
-cron { "${project_name}-dashboard-onboot"
+cron { "${project_name}-dashboard-onboot":
   command => $dashboard_command,
   user    => $apache::params::user,
   special => 'reboot',
