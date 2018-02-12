@@ -13,6 +13,12 @@ python::pip { 'bztools':
   url     => 'git+https://github.com/LegNeato/bztools.git@27f7fc1ae28de9de52d0c85120ba67a9a881db92',
   require => [
     Package['git'],
+    Python::Pip['remoteobjects'],
+    Python::Pip['validate-email'],
+    Python::Pip['lockfile'],
+    Python::Pip['bleach'],
+    Python::Pip['python-dateutil'],
+    Python::Pip['six'],
   ]
 }
 
