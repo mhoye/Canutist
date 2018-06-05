@@ -1,4 +1,4 @@
-# Canutist
+# Canutist/TriageBot
 This is a tool for facilitating community involvement the Bugzilla triage process.
 It is named for Canute The Great, 12th century king of what are now Denmark, Norway, 
 England and Sweden, and dedicated to those of us who cannot simply order the 
