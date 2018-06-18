@@ -3,7 +3,7 @@
     "builders": [
       "amazon-ebs-ubuntu"
     ],
-    "project_description": "The Nubis deployment repository for Mozilla's triagebot.mozilla.org",
+    "project_description": "The Nubis deployment repository for Mozilla's triagebot.mozilla.org aka Canutist",
     "project_name": "triagebot",
     "source_ami_project_version": "v2.2.0",
     "project_version": "v2.2.0_{{env `GIT_COMMIT_SHA`}}",
