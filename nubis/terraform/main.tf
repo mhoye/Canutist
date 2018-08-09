@@ -1,5 +1,9 @@
+provider "aws" {
+  region = "${var.region}"
+}
+
 module "worker" {
-  source                    = "github.com/nubisproject/nubis-terraform//worker?ref=v2.2.0"
+  source                    = "github.com/nubisproject/nubis-terraform//worker?ref=v2.3.0"
   region                    = "${var.region}"
   environment               = "${var.environment}"
   account                   = "${var.account}"
@@ -13,7 +17,7 @@ module "worker" {
 }
 
 module "load_balancer" {
-  source               = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v2.2.0"
+  source               = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v2.3.0"
   region               = "${var.region}"
   environment          = "${var.environment}"
   account              = "${var.account}"
@@ -24,7 +28,7 @@ module "load_balancer" {
 }
 
 module "dns" {
-  source       = "github.com/nubisproject/nubis-terraform//dns?ref=v2.2.0"
+  source       = "github.com/nubisproject/nubis-terraform//dns?ref=v2.3.0"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -33,7 +37,7 @@ module "dns" {
 }
 
 module "storage" {
-  source                 = "github.com/nubisproject/nubis-terraform//storage?ref=v2.2.0"
+  source                 = "github.com/nubisproject/nubis-terraform//storage?ref=v2.3.0"
   region                 = "${var.region}"
   environment            = "${var.environment}"
   account                = "${var.account}"
@@ -43,7 +47,7 @@ module "storage" {
 }
 
 module "backup" {
-  source       = "github.com/nubisproject/nubis-terraform//bucket?ref=v2.2.0"
+  source       = "github.com/nubisproject/nubis-terraform//bucket?ref=v2.3.0"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -53,7 +57,7 @@ module "backup" {
 }
 
 module "mail" {
-  source       = "github.com/nubisproject/nubis-terraform//mail?ref=v2.2.0"
+  source       = "github.com/nubisproject/nubis-terraform//mail?ref=v2.3.0"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
