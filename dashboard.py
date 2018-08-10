@@ -5,6 +5,7 @@
 # License: MPL
 
 import json
+import urllib
 import urllib2
 import sys
 import re
@@ -80,7 +81,7 @@ Outstanding Bugs!
         print '''<div class="dayheader">Outstanding bugs for %s: %s</div>''' % (str(key),  str(len(bugdays[key])))
         print '''<div class="day"><blockquote>'''
         for boog in bugdays[key]:
-            print '''<br/><a href="https://bugzilla.mozilla.org/%s">Bug %s</a>: %s''' % (boog.id, boog.id, escape(boog.summary))
+            print '''<br/><a href="https://bugzilla.mozilla.org/%s">Bug %s</a>: %s''' % (boog['id'], boog['id'], escape(boog['summary']))
         print '''</blockquote></div>'''
 
     print "</body></html>"
@@ -121,11 +122,17 @@ def getOutstandingBugs(bzagent,someday):
     buglist = list()
 
     # Get the bugs from the bugzilla API
- 
-    for options in option_sets.values():
-        bugs = bzagent.get_bug_list(options) 
-        buglist.extend(bugs)
-  
+
+    for opt in option_sets:
+        bug_url = ("https://bugzilla.mozilla.org/rest/bug?" + urllib.urlencode(option_sets[opt]) )
+        bug_url = bug_url.replace("ug+creat","ug%20creat").replace("%5B","[").replace("%5D","]")
+        print bug_url
+        resp = urllib.urlopen(bug_url)
+        bugdict = json.loads(resp.read())
+        for c in bugdict['bugs']:
+            buglist.append(c) 
+        
+    
     #print  date_to + " - " + str(len(buglist))
     return buglist
 
