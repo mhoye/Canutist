@@ -1,0 +1,8 @@
+[template]
+src = "%%PROJECT%%.tmpl"
+dest = "/etc/bznag.cfg"
+prefix = "/%%PROJECT%%-%%ENVIRONMENT%%/%%ENVIRONMENT%%"
+
+keys = [
+    "/config"
+]
